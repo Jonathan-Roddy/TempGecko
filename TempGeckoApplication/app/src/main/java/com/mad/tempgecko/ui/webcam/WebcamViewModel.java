@@ -1,14 +1,14 @@
-package com.mad.tempgecko.ui.home;
+package com.mad.tempgecko.ui.webcam;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class HomeViewModel extends ViewModel {
+public class WebcamViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public HomeViewModel() {
+    public WebcamViewModel() {
         mText = new MutableLiveData<>();
         mText.setValue("This is home fragment");
     }

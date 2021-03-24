@@ -6,10 +6,10 @@
     app:startDestination="@id/navigation_dashboard">
 
     <fragment
-        android:id="@+id/navigation_home"
-        android:name="com.mad.tempgecko.ui.home.HomeFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        android:id="@+id/navigation_webcam"
+        android:name="com.mad.tempgecko.ui.webcam.WebcamFragment"
+        android:label="@string/title_webcam"
+        tools:layout="@layout/fragment_webcam" />
 
     <fragment
         android:id="@+id/navigation_dashboard"

@@ -1,30 +1,27 @@
-package com.mad.tempgecko.ui.home;
+package com.mad.tempgecko.ui.webcam;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.mad.tempgecko.R;
 
-public class HomeFragment extends Fragment {
+public class WebcamFragment extends Fragment {
 
-    private HomeViewModel homeViewModel;
+    private WebcamViewModel webcamViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_home, container, false);
+        webcamViewModel = new ViewModelProvider(this).get(WebcamViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_webcam, container, false);
 
 //        final TextView textView = root.findViewById(R.id.text_home);
-//        homeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+//        webcamViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
 //            @Override
 //            public void onChanged(@Nullable String s) {
 //                textView.setText(s);

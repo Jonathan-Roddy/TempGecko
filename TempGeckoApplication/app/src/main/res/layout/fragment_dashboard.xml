@@ -7,85 +7,129 @@
     tools:context=".ui.dashboard.DashboardFragment">
 
     <Switch
-        android:id="@+id/switch1"
+        android:id="@+id/sLED"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="24dp"
         android:text="Main LED Light: "
-        app:layout_constraintEnd_toStartOf="@+id/switch2"
-        app:layout_constraintHorizontal_bias="0.514"
+        app:layout_constraintEnd_toStartOf="@+id/sHeatMat"
+        app:layout_constraintHorizontal_bias="0.531"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+        app:layout_constraintTop_toBottomOf="@+id/tvMonitor" />
 
     <Switch
-        android:id="@+id/switch2"
+        android:id="@+id/sWindow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Open Window : "
+        app:layout_constraintEnd_toStartOf="@+id/sHeatMat"
+        app:layout_constraintHorizontal_bias="0.551"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sLED" />
+
+    <Switch
+        android:id="@+id/sHeatMat"
         android:layout_width="118dp"
         android:layout_height="25dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="52dp"
         android:text="Heat Mat: "
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+        app:layout_constraintTop_toBottomOf="@+id/tvWebcam" />
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/tvMonitor"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_marginStart="80dp"
         android:text="Monitor Status :"
         android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/tvMonitorStatus"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/tvWebcam"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="On/Off"
+        android:text="Webcam : "
         android:textSize="18sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/textView7"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.153"
-        app:layout_constraintStart_toEndOf="@+id/textView7" />
+        app:layout_constraintEnd_toStartOf="@+id/tvWebcamStatus"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/tvMonitorStatus"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView10"
+        android:id="@+id/tvWebcamStatus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Active"
         android:textSize="18sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/textView9"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.168"
-        app:layout_constraintStart_toEndOf="@+id/textView9" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/tvWebcam"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView9"
+        android:id="@+id/tvMonitorStatus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="12dp"
-        android:text="Webcam : "
+        android:text="On/Off"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+        app:layout_constraintEnd_toStartOf="@+id/tvWebcam"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/tvMonitor"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <View
         android:id="@+id/vTemp"
-        android:layout_width="339dp"
-        android:layout_height="120dp"
-        android:background="#FF6262"
-        app:layout_constraintBottom_toTopOf="@+id/vHumid"
+        android:layout_width="375dp"
+        android:layout_height="93dp"
+        android:layout_marginTop="16dp"
+        android:background="#A803A9F4"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.555"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/switch1" />
+        app:layout_constraintTop_toBottomOf="@+id/vLights" />
+
+    <View
+        android:id="@+id/vLights"
+        android:layout_width="375dp"
+        android:layout_height="93dp"
+        android:layout_marginTop="36dp"
+        android:background="#FF6262"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sWindow" />
+
+    <View
+        android:id="@+id/vHumid"
+        android:layout_width="375dp"
+        android:layout_height="93dp"
+        android:layout_marginTop="16dp"
+        android:background="#BAFFC107"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/vTemp" />
+
+    <View
+        android:id="@+id/vPress"
+        android:layout_width="375dp"
+        android:layout_height="93dp"
+        android:layout_marginTop="16dp"
+        android:background="#D54CAF50"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/vHumid"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/textView4"
-        android:layout_width="141dp"
+        android:id="@+id/tvTempNumber"
+        android:layout_width="wrap_content"
         android:layout_height="74dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginEnd="32dp"
         android:text="0"
         android:textAlignment="center"
         android:textColor="@color/white"
@@ -96,7 +140,21 @@
         app:layout_constraintVertical_bias="0.466" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tvLigthsNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="74dp"
+        android:layout_marginEnd="32dp"
+        android:text="0"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="50sp"
+        app:layout_constraintBottom_toBottomOf="@+id/vLights"
+        app:layout_constraintEnd_toEndOf="@+id/vLights"
+        app:layout_constraintTop_toTopOf="@+id/vLights"
+        app:layout_constraintVertical_bias="0.578" />
+
+    <TextView
+        android:id="@+id/tvTemp"
         android:layout_width="126dp"
         android:layout_height="24dp"
         android:layout_marginStart="8dp"
@@ -105,25 +163,30 @@
         android:textColor="@color/white"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/vTemp"
-        app:layout_constraintEnd_toStartOf="@+id/textView4"
+        app:layout_constraintEnd_toStartOf="@+id/tvTempNumber"
         app:layout_constraintHorizontal_bias="0.111"
         app:layout_constraintStart_toStartOf="@+id/vTemp"
         app:layout_constraintTop_toTopOf="@+id/vTemp"
         app:layout_constraintVertical_bias="0.487" />
 
-    <View
-        android:id="@+id/vHumid"
-        android:layout_width="340dp"
-        android:layout_height="120dp"
-        android:background="#A803A9F4"
-        app:layout_constraintBottom_toTopOf="@+id/vPress"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/vTemp" />
+    <TextView
+        android:id="@+id/tvLightsOn"
+        android:layout_width="wrap_content"
+        android:layout_height="24dp"
+        android:layout_marginStart="16dp"
+        android:text="Time of Lights on :"
+        android:textAlignment="viewEnd"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/vLights"
+        app:layout_constraintEnd_toStartOf="@+id/tvLigthsNumber"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/vLights"
+        app:layout_constraintTop_toTopOf="@+id/vLights"
+        app:layout_constraintVertical_bias="0.492" />
 
     <TextView
-        android:id="@+id/textView13"
+        android:id="@+id/tvHumid"
         android:layout_width="126dp"
         android:layout_height="24dp"
         android:layout_marginStart="12dp"
@@ -136,10 +199,10 @@
         app:layout_constraintTop_toTopOf="@+id/vHumid" />
 
     <TextView
-        android:id="@+id/textView15"
-        android:layout_width="141dp"
+        android:id="@+id/tvHumidNumber"
+        android:layout_width="wrap_content"
         android:layout_height="74dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginEnd="32dp"
         android:text="0"
         android:textAlignment="center"
         android:textColor="@color/white"
@@ -147,24 +210,12 @@
         app:layout_constraintBottom_toBottomOf="@+id/vHumid"
         app:layout_constraintEnd_toEndOf="@+id/vHumid"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/textView13"
+        app:layout_constraintStart_toEndOf="@+id/tvHumid"
         app:layout_constraintTop_toTopOf="@+id/vHumid"
         app:layout_constraintVertical_bias="0.633" />
 
-    <View
-        android:id="@+id/vPress"
-        android:layout_width="340dp"
-        android:layout_height="120dp"
-        android:layout_marginBottom="56dp"
-        android:background="#BAFFC107"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/vHumid" />
-
     <TextView
-        android:id="@+id/textView14"
+        android:id="@+id/tvPressure"
         android:layout_width="126dp"
         android:layout_height="24dp"
         android:layout_marginStart="12dp"
@@ -177,10 +228,10 @@
         app:layout_constraintTop_toTopOf="@+id/vPress" />
 
     <TextView
-        android:id="@+id/textView16"
-        android:layout_width="141dp"
+        android:id="@+id/tvPressureNumber"
+        android:layout_width="wrap_content"
         android:layout_height="74dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginEnd="32dp"
         android:text="0"
         android:textAlignment="center"
         android:textColor="@color/white"
@@ -188,7 +239,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/vPress"
         app:layout_constraintEnd_toEndOf="@+id/vPress"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/textView14"
+        app:layout_constraintStart_toEndOf="@+id/tvPressure"
         app:layout_constraintTop_toTopOf="@+id/vPress"
         app:layout_constraintVertical_bias="0.466" />
 
