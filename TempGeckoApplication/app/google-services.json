@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "163185901759",
+    "project_id": "tempgecko",
+    "storage_bucket": "tempgecko.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:163185901759:android:6765809c644367aa3bc60a",
+        "android_client_info": {
+          "package_name": "com.mad.tempgecko"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "163185901759-76662613stqbchhoomm31f3bo5jpvnjo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDwObmDTfWVRBzEMbwIc4S2S_0jOsFA51Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "163185901759-76662613stqbchhoomm31f3bo5jpvnjo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
