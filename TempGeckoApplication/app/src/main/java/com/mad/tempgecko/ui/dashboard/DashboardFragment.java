@@ -24,6 +24,9 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.mad.tempgecko.R;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 import static android.content.ContentValues.TAG;
 import static android.graphics.Color.GREEN;
 import static android.graphics.Color.RED;
@@ -39,7 +42,11 @@ public class DashboardFragment extends Fragment {
     Switch sLED, sHeatMat, sWindow;
     double legthOfLights = 0.0, temperature= 0.0, humidity= 0.0, pressure= 0.0;
     boolean lightOn = false, heatMat= false, window= false, monitorStatus = false;
+    String nowTimeStamp;
+    String newtimeStamp;
+    String calculateNowTimeStamp, calculateNewTimeStamp;
 
+//    DateTime lightsOn;
     private DashboardViewModel dashboardViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -112,7 +119,7 @@ public class DashboardFragment extends Fragment {
 
                                 // Icons
                                 // Lights on
-                                tvLigthsNumber.setText(document.getString("LightLength"));
+//                                tvLigthsNumber.setText(document.getString("LightLength"));
                                 // Temperature
                                 tvTempNumber.setText(document.getString("Temperture"));
                                 // Humidity
@@ -139,21 +146,55 @@ public class DashboardFragment extends Fragment {
                         // Update Main LED on cloud
                         db.collection("1").document("tKKVzC7Joswkyh8z12h6")
                                 .update( "MainLED", true );
-//                    updateLightsOnIcon(true);
+                        // Start timer and store to Database : Last Turned on + length it has been on for
+                        nowTimeStamp = new SimpleDateFormat("HH:mm:ss_dd-MM-yyyy").format(Calendar.getInstance().getTime());
+                        db.collection("1").document("tKKVzC7Joswkyh8z12h6")
+                                .update( "LightsOn", nowTimeStamp );
+
+                        calculateNowTimeStamp = new SimpleDateFormat("HHmmssddMMyyyy").format(Calendar.getInstance().getTime());
+//                        System.out.println("///////////////////////////////////// nowTimeStamp "+ calculateNowTimeStamp);
+
 
                     } else {
                         // Update Main LED on cloud
                         db.collection("1").document("tKKVzC7Joswkyh8z12h6")
                                 .update( "MainLED", false );
-//                    updateLightsOnIcon(false);
+                        // Compare when Light was last turned on and store to Database
+                        newtimeStamp = new SimpleDateFormat("HH:mm:ss_dd-MM-yyyy").format(Calendar.getInstance().getTime());
+
+                        calculateNewTimeStamp = new SimpleDateFormat("HHmmssddMMyyyy").format(Calendar.getInstance().getTime());
+//                        System.out.println("///////////////////////////////////// newtimeStamp "+ calculateNewTimeStamp);
+
+                        long nowTs = Long.parseLong(calculateNowTimeStamp);
+                        long newTs = Long.parseLong(calculateNewTimeStamp);
+
+                        long input = (newTs - nowTs)/100000000;
+                        long numberOfDays;
+                        long numberOfHours;
+                        long numberOfMinutes;
+                        long numberOfSeconds;
+
+                        numberOfDays = input / 86400;
+                        numberOfHours = (input % 86400 ) / 3600 ;
+                        numberOfMinutes = ((input % 86400 ) % 3600 ) / 60;
+                        numberOfSeconds = ((input % 86400 ) % 3600 ) % 60  ;
+
+                        String timeLength = String.valueOf(numberOfSeconds) + "seconds "+ String.valueOf(numberOfMinutes) +"minutes "+ String.valueOf(numberOfHours) +"hours "+ String.valueOf(numberOfDays)+"days";
+                        String timeLength2 = String.valueOf(numberOfDays) +":"+ String.valueOf(numberOfHours)  +":"+ String.valueOf(numberOfMinutes)  +":"+  String.valueOf(numberOfSeconds);
+
+//                        System.out.println("///////////////////////////////////// times "+ input);
+//                        System.out.println("///////////////////////////////////// timeLength " + timeLength);
+
+//                        String LightLength = String.valueOf(input);
+                        db.collection("1").document("tKKVzC7Joswkyh8z12h6")
+                                .update( "LightLength", timeLength2 );
+
+                        // store the time and date of when the lights were turned off
+                        db.collection("1").document("tKKVzC7Joswkyh8z12h6")
+                                .update( "LastLightsOn", newtimeStamp );
                     }
                 }
 
-//            private void updateLightsOnIcon(boolean b) {
-//                if(b){
-//
-//                }
-//            }
             });
 
             // Update HeatMat
@@ -224,6 +265,7 @@ public class DashboardFragment extends Fragment {
                         sWindow.setClickable(false);
                     }
 
+                    tvLigthsNumber.setText(snapshot.getString("LightLength"));
                     // Temperature
                     tvTempNumber.setText(snapshot.getString("Temperture"));
                     // Humidity

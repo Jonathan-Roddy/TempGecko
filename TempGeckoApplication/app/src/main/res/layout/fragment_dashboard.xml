@@ -141,16 +141,17 @@
     <TextView
         android:id="@+id/tvLigthsNumber"
         android:layout_width="wrap_content"
-        android:layout_height="74dp"
-        android:layout_marginEnd="32dp"
+        android:layout_height="46dp"
         android:text="0"
         android:textAlignment="center"
         android:textColor="@color/white"
-        android:textSize="50sp"
+        android:textSize="36sp"
         app:layout_constraintBottom_toBottomOf="@+id/vLights"
         app:layout_constraintEnd_toEndOf="@+id/vLights"
-        app:layout_constraintTop_toTopOf="@+id/vLights"
-        app:layout_constraintVertical_bias="0.578" />
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="@+id/vLights"
+        app:layout_constraintTop_toBottomOf="@+id/tvLightsOn"
+        app:layout_constraintVertical_bias="0.478" />
 
     <TextView
         android:id="@+id/tvTemp"
@@ -172,17 +173,15 @@
         android:id="@+id/tvLightsOn"
         android:layout_width="wrap_content"
         android:layout_height="24dp"
-        android:layout_marginStart="16dp"
         android:text="Time of Lights on :"
         android:textAlignment="viewEnd"
         android:textColor="@color/white"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/vLights"
-        app:layout_constraintEnd_toStartOf="@+id/tvLigthsNumber"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintEnd_toEndOf="@+id/vLights"
         app:layout_constraintStart_toStartOf="@+id/vLights"
         app:layout_constraintTop_toTopOf="@+id/vLights"
-        app:layout_constraintVertical_bias="0.492" />
+        app:layout_constraintVertical_bias="0.173" />
 
     <TextView
         android:id="@+id/tvHumid"

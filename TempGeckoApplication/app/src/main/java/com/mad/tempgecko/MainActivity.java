@@ -36,6 +36,26 @@ public class MainActivity extends AppCompatActivity {
         // Open TempGecko py file on Pi and run
         // This will send data to the firebase firestore so that this Application can store and use
 
+        // Setting live Webcam
+        // https://www.instructables.com/How-to-Make-Raspberry-Pi-Webcam-Server-and-Stream-/
+//        Make sure 'daemon' is ON.
+//        Set 'framerate' anywhere in between 1000 to 1500.
+//        Keep 'Stream_port' to 8081.
+//        'Stream_quality' should be 100.
+//        Change 'Stream_localhost' to OFF.
+//        Change 'webcontrol_localhost' to OFF.
+//        Set 'quality' to 100.
+//        Set 'width' & 'height' to 640 & 480.
+//        Set 'post_capture' to 5.
+//        Press ctrl + x to exit. Type y to save and enter to conform.
+//        Again type in the command 'sudo nano /etc/default/motion ' and press enter.
+//
+//                Set ' start_motion_daemon ' to yes. Save and exit.
+        // sudo apt-get install motion
+        // sudo nano /etc/motion/motion.conf
+        // sudo nano /etc/default/motion
+        // sudo service motion restart
+        // sudo  motion
 
 
     }
