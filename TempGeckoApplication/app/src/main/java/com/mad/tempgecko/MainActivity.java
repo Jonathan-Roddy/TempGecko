@@ -28,6 +28,16 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(navView, navController);
 
         // Logo from : https://cdn.dribbble.com/users/1231052/screenshots/6600616/image.png
+
+        // Steps to get it working
+        // Set up SSH on Raspberry Pi
+        // Connect to Pi via VNC View via IP
+        // Use that IP to connect to the WebCam via $ sudo motion
+        // Open TempGecko py file on Pi and run
+        // This will send data to the firebase firestore so that this Application can store and use
+
+
+
     }
 
 }

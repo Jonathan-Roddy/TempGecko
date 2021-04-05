@@ -25,6 +25,8 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.mad.tempgecko.R;
 
 import static android.content.ContentValues.TAG;
+import static android.graphics.Color.GREEN;
+import static android.graphics.Color.RED;
 
 public class DashboardFragment extends Fragment {
 
@@ -36,7 +38,7 @@ public class DashboardFragment extends Fragment {
 
     Switch sLED, sHeatMat, sWindow;
     double legthOfLights = 0.0, temperature= 0.0, humidity= 0.0, pressure= 0.0;
-    boolean lightOn = false, heatMat= false, window= false;
+    boolean lightOn = false, heatMat= false, window= false, monitorStatus = false;
 
     private DashboardViewModel dashboardViewModel;
 
@@ -49,6 +51,7 @@ public class DashboardFragment extends Fragment {
         // Setting Variables
         tvMonitorStatus = (TextView) root.findViewById(R.id.tvMonitorStatus);
         tvWebcamStatus = (TextView) root.findViewById(R.id.tvWebcamStatus);
+        tvWebcamStatus.setText("Active");
 
         // Icons
         tvLigthsNumber = (TextView) root.findViewById(R.id.tvLigthsNumber);
@@ -60,7 +63,7 @@ public class DashboardFragment extends Fragment {
         sLED = (Switch) root.findViewById(R.id.sLED);
         sHeatMat = (Switch) root.findViewById(R.id.sHeatMat);
         sWindow = (Switch) root.findViewById(R.id.sWindow);
-
+//
         // Call Firebase
         fetchInitialFirebaseStats();
 
@@ -83,15 +86,15 @@ public class DashboardFragment extends Fragment {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 System.out.println(document.getId() + " => " + document.getData());
 
-                                // Status Update
-                                boolean mStatus = document.getBoolean("Monitor");
-                                boolean wStatus = document.getBoolean("WebcamStatus");
-
-                                if(mStatus) tvMonitorStatus.setText("Online");
-                                else tvMonitorStatus.setText("Offline");
-
-                                if(wStatus) tvWebcamStatus.setText("Online");
-                                else tvWebcamStatus.setText("Offline");
+//                                // Status Update
+//                                boolean mStatus = document.getBoolean("Monitor");
+//                                boolean wStatus = document.getBoolean("WebcamStatus");
+//
+//                                if(mStatus) tvMonitorStatus.setText("Online");
+//                                else tvMonitorStatus.setText("Offline");
+//
+//                                if(wStatus) tvWebcamStatus.setText("Online");
+//                                else tvWebcamStatus.setText("Offline");
 
                                 // Switches
                                 boolean MainLED = document.getBoolean("MainLED");
@@ -127,64 +130,65 @@ public class DashboardFragment extends Fragment {
     }
 
     private void updateSwitches() {
-        // Update Main LED
-        sLED.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (sLED.isChecked()) {
-                    // Update Main LED on cloud
-                    db.collection("1").document("tKKVzC7Joswkyh8z12h6")
-                            .update( "MainLED", true );
+
+            // Update Main LED
+            sLED.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (sLED.isChecked()) {
+                        // Update Main LED on cloud
+                        db.collection("1").document("tKKVzC7Joswkyh8z12h6")
+                                .update( "MainLED", true );
 //                    updateLightsOnIcon(true);
 
-                } else {
-                    // Update Main LED on cloud
-                    db.collection("1").document("tKKVzC7Joswkyh8z12h6")
-                            .update( "MainLED", false );
+                    } else {
+                        // Update Main LED on cloud
+                        db.collection("1").document("tKKVzC7Joswkyh8z12h6")
+                                .update( "MainLED", false );
 //                    updateLightsOnIcon(false);
+                    }
                 }
-            }
 
 //            private void updateLightsOnIcon(boolean b) {
 //                if(b){
 //
 //                }
 //            }
-        });
+            });
 
-        // Update HeatMat
-        sHeatMat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (sHeatMat.isChecked()) {
-                    // Update Main LED on cloud
-                    db.collection("1").document("tKKVzC7Joswkyh8z12h6")
-                            .update( "HeatMat", true );
+            // Update HeatMat
+            sHeatMat.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (sHeatMat.isChecked()) {
+                        // Update Main LED on cloud
+                        db.collection("1").document("tKKVzC7Joswkyh8z12h6")
+                                .update( "HeatMat", true );
 
-                } else {
-                    // Update Main LED on cloud
-                    db.collection("1").document("tKKVzC7Joswkyh8z12h6")
-                            .update( "HeatMat", false );
+                    } else {
+                        // Update Main LED on cloud
+                        db.collection("1").document("tKKVzC7Joswkyh8z12h6")
+                                .update( "HeatMat", false );
+                    }
                 }
-            }
-        });
+            });
 
-        // Update Window
-        sWindow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (sWindow.isChecked()) {
-                    // Update Main LED on cloud
-                    db.collection("1").document("tKKVzC7Joswkyh8z12h6")
-                            .update( "Window", true );
+            // Update Window
+            sWindow.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (sWindow.isChecked()) {
+                        // Update Main LED on cloud
+                        db.collection("1").document("tKKVzC7Joswkyh8z12h6")
+                                .update( "Window", true );
 
-                } else {
-                    // Update Main LED on cloud
-                    db.collection("1").document("tKKVzC7Joswkyh8z12h6")
-                            .update( "Window", false );
+                    } else {
+                        // Update Main LED on cloud
+                        db.collection("1").document("tKKVzC7Joswkyh8z12h6")
+                                .update( "Window", false );
+                    }
                 }
-            }
-        });
+            });
 
     }
 
@@ -199,6 +203,26 @@ public class DashboardFragment extends Fragment {
                 }
                 if (snapshot != null && snapshot.exists()) {
                     Log.d(TAG, "Current data: " + snapshot.getData());
+
+                    // Check if Monitoring system is online.
+                    monitorStatus = snapshot.getBoolean("Monitor");
+                    if(monitorStatus){
+                        tvMonitorStatus.setText("Online");
+                        tvMonitorStatus.setTextColor(GREEN);
+
+                        sLED.setClickable(true);
+                        sHeatMat.setClickable(true);
+                        sWindow.setClickable(true);
+
+                    }
+                    else{
+                        tvMonitorStatus.setText("Offline");
+                        tvMonitorStatus.setTextColor(RED);
+
+                        sLED.setClickable(false);
+                        sHeatMat.setClickable(false);
+                        sWindow.setClickable(false);
+                    }
 
                     // Temperature
                     tvTempNumber.setText(snapshot.getString("Temperture"));
