@@ -16,11 +16,11 @@ To be able to run this complete system you will need the following:
 
 ## System Architecture
 System Architecture: 
-![ System Architecture](https://github.com/Jonathan-Roddy/MyMoon/blob/master/Assets/Moon_DrawIO.png "System Architecture")
+![ System Architecture](https://github.com/Jonathan-Roddy/TempGecko/blob/main/TempGeckoArchitecture.png "System Architecture")
 
 ## FireStore Architecture
 FireStore Architecture:
-![ FireStore Architecture](https://github.com/Jonathan-Roddy/MyMoon/blob/master/Assets/Moon_DrawIO.png "FireStore Architecture")
+![ FireStore Architecture](https://github.com/Jonathan-Roddy/TempGecko/blob/main/Image%20of%20Google%20Firebase-Firestore%20.png "FireStore Architecture")
 
 ## Features
 
